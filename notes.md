@@ -264,6 +264,15 @@ print(quote) #to be or not to be
 ## Booleans
 
 ```python
-True
-False
+True #0
+False #1
+```
+
+## Exercise Type Conversion
+
+```python
+birth_year = input('What year were you born? ')
+birth_year = int(birth_year)
+age = 2020 - birth_year
+print(f'You are {age} years old.')
 ```
