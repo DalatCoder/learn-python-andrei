@@ -574,4 +574,88 @@ my_tuple[1] = 0 #error
 
 print(my_tuple[1]) #2
 print(5 in my_tuple) #True
+
+x,y,z *other = my_tuple
+
+#2 methods on tuple
+print(my_tuple.count(5)) #1
+print(my_tuple.index(5)) #4
+print(len(my_tuple)) #5
+```
+
+## Set
+
+- Unordered collection of unique objects
+
+```python
+my_set = {1,2,3,4,5}
+print(my_set) #{1,2,3,4,5}
+
+my_set = {1,2,3,4,5,5}
+print(my_set) #{1,2,3,4,5}
+
+my_set.add(100);
+my_set.add(2)
+print(my_set) #{1,2,3,4,5,100}
+```
+
+- Get a set of unique number in a list
+
+```python
+my_list = [1,2,3,4,5,5]
+my_set = set(my_list)
+print(my_set) #{1,2,3,4,5}
+```
+
+- Set object does not support indexing
+
+```python
+my_set = {1,2,3,4,5}
+my_set[0] #error
+print(1 in my_set) #True
+print(len(my_set)) #5
+
+new_set = my_set.copy()
+
+print(list(my_set)) #[1,2,3,4,5]
+```
+
+### Set methods (Venn diagram)
+
+- difference()
+
+- discard()
+
+- difference_update()
+
+- intersection()
+
+- isdisjoint()
+
+- issubset()
+
+- issuperset()
+
+- union()
+
+```python
+my_set = {1,2,3,4,5}
+your_set = {4,5,6,7,8,9,10}
+
+my_set.difference(your_set) #{1,2,3}
+my_set.discard(5) #{1,2,3,4}
+my_set.difference_update(your_set) #{1,2,3}
+my_set.intersection(your_set) #{4,5}
+my_set.isdisjoint(your_set) #False
+my_set.union(your_set) #{1,2,3,4,5,6,7,8,9,10}
+
+# union
+print(my_set | your_set)
+
+# intersection
+print(my_set & your_set)
+
+my_set = {4,5}
+my_set.issubset(your_set) #True
+your_set.issuperset(my_set) #True
 ```
