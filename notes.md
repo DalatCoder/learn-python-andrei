@@ -659,3 +659,270 @@ my_set = {4,5}
 my_set.issubset(your_set) #True
 your_set.issuperset(my_set) #True
 ```
+
+## Conditional Logic
+
+```python
+is_old = True
+is_licenced = True
+
+if is_old:
+    print('You are old enough to drive!')
+elif is_licenced:
+    print('You can drive now!')
+else:
+    print('You are too young!')
+print('Out side if code block')
+```
+
+- Use expression
+
+```python
+is_old = True
+is_licenced = True
+
+if is_old and is_licenced:
+    print('Drive drive')
+```
+
+### Indentation in Python
+
+Be careful with spaces
+
+### Truthy and Falsy
+
+```python
+bool('hello') #True
+bool(5) #True
+
+bool('') #False
+bool(0) #False
+bool(None)
+
+password = '123'
+username = 'hieu'
+
+if password and username:
+    print('Login!')
+```
+
+### Ternary Operator
+
+<mark>condition_if_true **if** condition **else** condition_if_false</mark>
+
+```python
+is_friend = True
+can_message = "message allowed" if is_friend else "not allowed to message"
+
+print(can_message)
+```
+
+### Short Circuiting
+
+```python
+is_friend = True
+is_user = True
+
+print(is_friend and is_user) #True
+print(is_friend or is_user) #True
+```
+
+- Trong mệnh đề and
+  
+  - Nếu is_friend = false thì không cần kiểm tra vế sau nữa
+
+- Trong mệnh đề or
+  
+  - Nếu is_friend = true thì không cần kiểm tra vế sau nữa
+
+=> Short circuiting
+
+### Logical Operators
+
+```python
+4 > 5 #False
+4 < 5 #True
+4 == 4 #True
+4 != 4 #False
+1 <= 2 <= 3 #True
+1 < 2 > 3 < 4 #False short circuiting
+and
+or
+not
+```
+
+### Is
+
+```python
+print(True == 1) #True
+print('' == 1) #False
+print('1' == 1) #False
+print([] == 1) #False
+print(10 == 10.0) #True
+print([] == []) #True
+```
+
+- == convert 2 operand to the same type
+
+- == Check for the equality of value (auto type conversion)
+
+```python
+print(True is 1) #False
+print('1' is 1) #False
+print([] is 1) #False
+print(10 is 10.0) #False
+print([] is []) #False
+
+print(True is True) #True
+print('1' is '1') #True
+print([] is []) #False
+print(10 is 10) #True
+print([1,2,3] is [1,2,3]) #False
+```
+
+- is check for the address in memory
+
+### Loops
+
+Iterable: Something we can loop over:
+
+- 'This is a string'
+
+- [1,2,3,4,5]
+
+#### For loop
+
+```python
+for letter in 'Zero to Mastery':
+    print(letter)
+print('Finish')
+print(letter) #y
+```
+
+### Iterable
+
+A collection that can be iterated over
+
+- list
+
+- dictionary
+
+- tuple
+
+- set
+
+- string
+
+#iterate -> one by one check each item in the collection.
+
+```python
+# Iterate over a dictionary
+user = {
+    'name': 'Golem',
+    'age': 5006,
+    'can_swim': False
+}
+
+for item in user:
+    print(item)
+# Key
+
+for item in user.items():
+    print(item)
+# Tuple
+
+for key, value in user.items():
+    print(key, value)
+
+for item in user.values():
+    print(item)
+# Value
+
+for item in user.keys():
+    print(item)
+# Key
+```
+
+### Range()
+
+```python
+print(range(100)) #range(0, 100) | range #0object
+print(range(0, 100)) #range(0, 100)
+
+for number in range(0, 100):
+    print(number)
+
+#0 - #99: Loop 100 times
+
+for _ in range(0, 10):
+    print('Hello')
+
+for _ in range(0, 10, 2):
+    print(_)
+# 0 2 4 6 8
+
+for _ in range(10, 0, -1):
+    print(_1)
+# 10 9 8 7 6 5 4 3 2 1
+
+```
+
+#### Quick way to create a list which have integers
+
+```python
+# Quick way to create a list which have integers
+for _ in range(2):
+    print(list(range(10)))
+```
+
+### Enumerate() | Access index number
+
+```python
+for idx, char in enumerate('Hello'):
+    print(idx, char)
+```
+
+```python
+for i, number in enumerate(list(range(100))):
+    if number == 50:
+        print(f'The index of 50 is: {i}')
+        break
+```
+
+### While loop
+
+while condition:
+
+    do_something
+
+```python
+i = 0
+while i < 50:
+    print(i)
+    i += 1
+# Special key
+else:
+    print('done with all the work')
+```
+
+The else block will only execute if there is no break statement
+
+```python
+i = 0
+while i < 10:
+    print(i)
+    i += 1
+    break
+else:
+    print('Else block never be executed') 
+```
+
+## What is good code?
+
+- Clean (following best practices)
+
+- Readability
+
+- Predictability
+
+- DRY: Don't repeat yourself
