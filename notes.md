@@ -926,3 +926,170 @@ else:
 - Predictability
 
 - DRY: Don't repeat yourself
+
+## Functions
+
+```python
+# define a function
+def say_hello():
+    print('Hello World!')
+
+say_hello()
+```
+
+### Parameters and Arguments
+
+```python
+# parameters
+# default parameters
+def say_hello(name='Darth Vader', emoji='👾')
+    print(f'Hello {name} {emoji}')
+
+# positional arguments
+say_hello('Hieu', ':3')
+
+# keyword arguments
+say_hello(emoji=':v', name='Hieu')
+```
+
+### Return keyword
+
+Function always return some values, default to None
+
+Best practices:
+
+- Should do one thing really well.
+
+- Should return something.
+
+```python
+def sum(num1, num2):
+    return num1 + num2
+
+print(sum(4,5))
+```
+
+### Methods vs. Functions
+
+```python
+# Built-in function
+list()
+print()
+max()
+min()
+input()
+
+# Methods
+'hello'.capitalize()
+```
+
+### Docstrings (Describe the purpose of function)
+
+```python
+def test(a):
+    '''
+    Info: this function tests and prints param a
+    '''
+    print(a)
+
+test('Hello')
+
+help(test)
+print(test.__doc__)
+```
+
+### Arguments and keyword argument (\*args, \*\*kwargs)
+
+```python
+def super_func(args):
+    return sum(args)
+
+super_func(1,2,3,4,5); #error
+
+# Number that can accept any number of argument
+def super_func_1(*args):
+    print(args) #(1,2,3,4,5)
+    print(*args) #1 2 3 4 5
+    return sum(args)
+super_func(1,2,3,4,5); #15
+
+def super_func_2(*args, **kwargs):
+    print(kwargs) #{'num1': 5, 'num2: 10'}
+    total = 0
+    for items  in kwargs.values()
+        total += items;
+    return sum(args) + total
+
+super_func_2(1,2,3, num1=5, num2=10)
+```
+
+<mark>Rule: params,  \*args, default parameters, \*\*kwargs</mark>
+
+## Scope
+
+What variables do I have access to?
+
+**Python have function scope**
+
+```python
+def some_func():
+    var = 1
+
+print(var) #error
+```
+
+```python
+if True:
+    x = 1
+
+print(1) #1
+```
+
+### Scope rules
+
+```python
+a = 1
+def confusion():
+    a = 5
+    return a
+
+print(a) #1
+print(confusion()) #5
+```
+
+Order:
+
+1. Start with local
+
+2. Parent local?
+
+3. Global
+
+4. Built in python functions
+
+### Global keyword
+
+- Params are local to function
+
+```python
+total = 0
+def count():
+    total += 1
+    return total
+
+print(count()) #error
+
+# bad practice
+def count_global():
+    global total
+    total += 1
+    return total
+
+def count_improve(total):
+    total += 1
+    return total  
+```
+
+### Nonlocal keyword
+
+Look for variable not in global but outside of current function (parent functions)
