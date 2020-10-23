@@ -21,8 +21,6 @@
 - set
 
 - dict
-  
-  
 
 ```python
 #<class 'int'>
@@ -275,4 +273,305 @@ birth_year = input('What year were you born? ')
 birth_year = int(birth_year)
 age = 2020 - birth_year
 print(f'You are {age} years old.')
+```
+
+## Python best practices
+
+[Python best practices](https://realpython.com/)
+
+## Exercise Password Checker
+
+```python
+username = input('Enter your username: ')
+password = input('Enter your password: ')
+password_length = len(password)
+password_hidden = '*' * password_length
+
+message = f'''
+Username: {username}
+Password: {password_hidden}
+Password length: {password_length}
+'''
+
+print(message)
+```
+
+## Data Structure
+
+### 1. List (Order sequence of object)[Array like]
+
+```python
+li = [1, 2, 3, 4, 5]
+li2 = ['a', 'b', 'c']
+li3 = [1, 2, 'a', 'b', True]
+
+amazon_cart = ['notebooks', 'sunglasses']
+amazon_cart[0] #notebooks
+amazon_cart[1] #sunglasses
+amazon_cart[2] #error: list index out of range
+```
+
+#### List slicing
+
+```python
+# [start:stop:step]
+amazon_cart = [
+    'notebooks',
+    'sunglasses',
+    'toys',
+    'grapes'
+]
+
+print(amazon_cart[0:2]) #notebooks, sunglasses
+print(amazon_cart[0::2]) #notebooks, toys
+```
+
+#### List is mutable
+
+```python
+amazon_cart = [
+    'notebooks',
+    'sunglasses',
+    'toys',
+    'grapes'
+]
+
+amazon_cart[0] = 'laptop'
+
+new_cart = amazon_cart[0:3]
+# new_cart ['laptop', 'sunglasses']
+# amazon_cart ['laptop', 'sunglasses', 'toys', 'grapes']
+```
+
+#### Copy a list
+
+```python
+amazon_cart = [
+    'notebooks',
+    'sunglasses',
+    'toys',
+    'grapes'
+]
+
+new_cart = amazon_cart[:]
+
+# Don't do that
+new_cart = amazon_cart
+```
+
+#### List methods
+
+```python
+basket = [1, 2, 3, 4, 5]
+len(basket) #5
+
+# adding
+basket.append(6) #[1, 2, 3, 4, 5, 6]
+
+# insert
+basket.insert(0, 0) #[0, 1, 2, 3, 4, 5, 6]
+
+# extend
+basket.extend([7, 8]) #[0, 1, 2, 3, 4, 5, 6, 7, 8]
+
+# removing
+basket.pop() #8
+print(basket) #[0, 1, 2, 3, 4, 5, 6, 7]
+
+basket.pop(0) #0
+print(basket) #[1, 2, 3, 4, 5, 6, 7]
+
+basket.remove(7) #None
+print(basket) #[1, 2, 3, 4, 5, 6]
+
+basket.clear() #None
+print(basket) #[]
+
+basket = ['a', 'b', 'c', 'd', 'e']
+
+# indexOf
+basket.index('d') #3
+# Error if not found
+
+print('d' in basket) #True
+print('x' in basket) #False
+print(basket.count('d')) #1
+
+basket.sort() #None
+print(basket) #['a', 'b', 'c', 'd', 'e']
+
+sorted(basket) #['a', 'b', 'c', 'd', 'e']
+
+basket.reverse() #None
+print(basket) #['e', 'd', 'c', 'b', 'a']
+```
+
+#### Common list patterns
+
+```python
+basket = ['a', 'b', 'c', 'd', 'e']
+
+# reverse
+print(basket[::-1])
+
+# copy a list
+print(basket[:])
+
+# range
+print(list(range(1, 100)))
+
+# join
+sentence = ' '.join(['hi', 'my', 'name', 'is', 'JOJO'])
+
+print(sentence) #hi my name is JOJO
+```
+
+#### List unpacking
+
+```python
+a,b,c, *other, d = [1,2,3,4,5,7,8,9]
+
+print(a) #1
+print(b) #2
+print(c) #3
+print(other) #[4,5,6,7,8]
+print(d) #9
+```
+
+### Matrix
+
+Come up a lot in machine learning and image processing
+
+```python
+matrix = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+
+photo = [
+    [1, 0, 1],
+    [0, 1, 0],
+    [1, 0, 1]
+]
+#print X
+
+matrix[0] #[1,0,1]
+matrix[0][1] #2
+```
+
+## None (null like, represent the absent of value)
+
+## Dictionary (hash table | Data type | Data structure)
+
+```python
+# unorder key:value pairs
+dictionary = {
+    'a': [1,2,3],
+    'b': 'Hello',
+    'x': True
+}
+
+print(dictionary['a'][1]) #1
+print(dictionary['b']) #'Hello'
+print(dictionary['c']) #error
+
+my_list = [
+    {
+        'a': [1,2,3],
+        'b': 'Hello',
+        'x': True
+    },
+    {
+        'a': [1,2,3],
+        'b': 'Goodbye',
+        'x': False
+    }        
+]
+
+my_list[0]['a'][1] #1
+```
+
+## Understanding Data Structures
+
+Hiểu và xác định được khi nào nên dùng data structure nào:
+
+- List
+
+- Dictionary
+
+### Dictionary keys
+
+```python
+dictionary = {
+    123: [1,2,3],
+    True: 'hello',
+    'key': 'word'
+}
+```
+
+- The key must be immutable
+
+- The key have to be unique
+
+### Dictionary methods
+
+```python
+user = {
+    'basket': [1,2,3],
+    'greet': 'hello'
+}
+
+print(user.get('age')) #None
+
+# Get age from user dictionary
+# If age doesn't exist, use 44, (default value)
+print(user.get('age', 44)) #44
+
+# Check if key exists in dict
+print('basket' in user) #True
+print('size' in user) #False
+
+# Get list of keys
+user.keys();
+
+# Get list of values
+user.values();
+
+# Entire item (key:value pairs | tuple)
+user.items();
+
+# Clear
+user.clear() #None
+print(user) #{}
+
+# Copy
+user_copied = user.copy()
+
+# Pop | Remove key
+print(user.pop('basket')) #[1,2,3]
+
+# PopItem
+print(user.popitem) # Randomly pop item
+
+# Update
+user.update({'greet': 'goodbye world!'})
+
+# Another way to create dictionary
+user2 = dict(name='JohnJohn')
+print(user2)
+```
+
+## Tuple
+
+- List like, but immutable
+
+- If the list don't expect to be changed, use tuple
+
+```python
+my_tuple = (1,2,3,4,5)
+my_tuple[1] = 0 #error
+
+print(my_tuple[1]) #2
+print(5 in my_tuple) #True
 ```
